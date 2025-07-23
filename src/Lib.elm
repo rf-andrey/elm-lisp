@@ -2,7 +2,7 @@ module Lib exposing (..)
 import Parser exposing (..)
 import Char exposing (isAlpha, isAlphaNum)
 import Set
-import Dict exposing (Dict)
+import Dict exposing (Dict, empty)
 
 {-
   - Números
@@ -155,16 +155,23 @@ runTest : String -> Result (List DeadEnd) (List SExp)
 runTest inp =
   run list inp
 
+type alias Model = Dict String SExp
 
-type alias VarTable = Dict String SExp
+init : Model
+init = empty
 
-eval : SExp -> SExp
-eval expr = case expr of
-    Number n -> Number n
-    Boolean b -> Boolean b
-    Operator op -> Operator op
-    Identifier id -> Identifier id
-    List ses -> List ses
+-- eval : 
+
+
+-- type alias VarTable = Dict String SExp
+
+-- eval : SExp -> SExp
+-- eval expr = case expr of
+--     Number n -> Number n
+--     Boolean b -> Boolean b
+--     Operator op -> Operator op
+--     Identifier id -> Identifier id
+--     List ses -> List ses
 
 -- type Error
 --   = UndefinedVariable String
@@ -183,6 +190,9 @@ eval expr = case expr of
 --         Nothing -> Err UndefinedVariable id
 --         Just x -> x
 --     List ses -> List ses
+
+
+
 
 
 
